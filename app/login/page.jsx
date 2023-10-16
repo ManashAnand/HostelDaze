@@ -1,13 +1,17 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import axios from 'axios'
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [pageData, setPageData] = useState({
     name: "",
     password: "",
-    secretAdminKey:""
   });
+
+  const router = useRouter()
+
   const [isAdmin, setIsAdmin] = useState(false);
 
   const handleChange = (e) => {
@@ -21,10 +25,40 @@ const Login = () => {
     setIsAdmin(!isAdmin);
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(pageData);
-    console.log(isAdmin);
+    console.log(isAdmin)
+    if(!isAdmin){
+        try {
+          const data = {pageData,isAdmin}
+          const res = await axios.post("http://localhost:3000/api/login", {
+             data
+            });
+            if (res.status === 200) {
+              router.push("/")
+            } else {
+              console.log("Error in logging user from server");
+            }
+        } catch (error) { 
+          console.log(error)
+          console.log("Error in logging user")
+        }
+    } else {
+      try {
+        const data = {pageData,isAdmin}
+        const res = await axios.post("http://localhost:3000/api/login", {
+           data
+          });
+          if (res.status === 200) {
+            router.push("/")
+          } else {
+            console.log("Error in logging user from server");
+          }
+        } catch (error) { 
+          console.log(error)
+          console.log("Error in logging user")
+      }
+    }
   };
 
   return (
@@ -54,7 +88,7 @@ const Login = () => {
           <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
         <div className="flex md:w-1/2  justify-center py-10 items-center ">
-          <form className="  xl:w-full xl:px-10 xl:mx-5">
+          <form className="  w-full xl:px-10 xl:mx-5">
             <h1 className="text-slate-800 font-bold text-4xl mb-1">Hey</h1>
             <p className="text-sm sm:text-4xl font-normal text-slate-600 mb-7">
               Let's start your registration
@@ -67,13 +101,13 @@ const Login = () => {
                 fill="currentColor"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
               <input
-                className="pl-2 outline-none border-none xl:w-full xl:h-10 xl:rounded-lg xl:ml-2 "
+                className="pl-2 outline-none border-none w-full xl:h-10 xl:rounded-lg xl:ml-2 "
                 type="text"
                 name="name"
                 id=""
@@ -92,13 +126,13 @@ const Login = () => {
                 fill="currentColor"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
               <input
-                className="pl-2 outline-none border-none xl:w-full xl:h-10 xl:rounded-lg xl:ml-2"
+                className="pl-2 outline-none border-none w-full xl:h-10 xl:rounded-lg xl:ml-2"
                 type="password"
                 name="password"
                 id=""
@@ -124,36 +158,7 @@ const Login = () => {
                 {isAdmin ? "Warden":"Student"}
               </span>
             </label>
-            {
-                isAdmin && (
-                    <>
-                    <div className="mt-5 flex items-center border-2 py-2 px-3 rounded-2xl">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-slate-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <input
-                className="pl-2 outline-none border-none xl:w-full xl:h-10 xl:rounded-lg xl:ml-2"
-                type="password"
-                name="secretAdminKey"
-                id=""
-                placeholder="Secret Admin password"
-                value={pageData?.secretAdminKey}
-                onChange={handleChange}
-              />
-            </div>
-                    </>
-                )
-            }
-         
+            
             
             <button
               type="submit"
