@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
+import { NextProvider } from '@/redux/NextProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,16 +15,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Navbar/>
-      <div className="w-full  flex justify-center items-center ">
-        <div className=" w-3/4 flex justify-center items-center flex-col ">
-          {children}
+      <NextProvider >
 
+        <Navbar/>
+        <div className="w-full  flex justify-center items-center ">
+          <div className=" w-3/4 flex justify-center items-center flex-col ">
+            {children}
+
+          </div>
         </div>
-      </div>
 
 
-      <Footer/>
+        <Footer/>
+      </NextProvider>
       </body>
     </html>
   )

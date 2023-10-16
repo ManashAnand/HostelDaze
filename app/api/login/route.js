@@ -20,12 +20,11 @@ export async function POST(req) {
   
   if(isAdmin){
       try {
-        const userDoc = await AdminModel.findOne({name}); 
+        let userDoc = await AdminModel.findOne({name}); 
         const passOk = bcrypt.compareSync(password, userDoc.password);
         if(passOk){
-            const Doc = {...userDoc,password:""}
-            console.log(Doc)
-            return NextResponse.json({admin:"Admin is registered",Doc},{status:200})
+            userDoc.password = ""
+            return NextResponse.json({admin:"Admin is registered",userDoc},{status:200})
         } 
         return NextResponse.json({admin:"Admin is not registered"},{status:200})
     
@@ -35,11 +34,11 @@ export async function POST(req) {
   }
   else {
     try {
-        const userDoc = await UserModel.findOne({name});   
+        let userDoc = await UserModel.findOne({name});   
         const passOk = bcrypt.compareSync(password, userDoc.password);
         if(passOk){
-            const Doc = {...userDoc,password:""}
-            return NextResponse.json({user:"User is registered",Doc},{status:200})
+            userDoc.password =""
+            return NextResponse.json({user:"User is registered",userDoc},{status:200})
         } 
         return NextResponse.json({user:"User is not registered"},{status:200})
     

@@ -3,12 +3,16 @@ import Link from "next/link";
 import React, { useState } from "react";
 import axios from 'axios'
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { logIn } from "@/redux/slices/UserSlice";
 
 const Login = () => {
   const [pageData, setPageData] = useState({
     name: "",
     password: "",
   });
+
+  const dispatch = useDispatch()
 
   const router = useRouter()
 
@@ -27,7 +31,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(isAdmin)
+    // console.log(isAdmin)
     if(!isAdmin){
         try {
           const data = {pageData,isAdmin}
@@ -35,6 +39,8 @@ const Login = () => {
              data
             });
             if (res.status === 200) {
+              // console.log(res?.data?.userDoc)
+              dispatch(logIn(res?.data?.userDoc))
               router.push("/")
             } else {
               console.log("Error in logging user from server");
@@ -50,6 +56,8 @@ const Login = () => {
            data
           });
           if (res.status === 200) {
+            // console.log(res?.data?.userDoc)
+            dispatch(logIn(res?.data?.userDoc))
             router.push("/")
           } else {
             console.log("Error in logging user from server");
