@@ -3,6 +3,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
 import { NextProvider } from '@/redux/NextProvider'
+import { ToastContainer } from 'react-toastify'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
         <div className="w-full  flex justify-center items-center ">
           <div className=" w-3/4 flex justify-center items-center flex-col ">
             {children}
-
+          <ToastContainer/>
           </div>
         </div>
 

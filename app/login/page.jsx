@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logIn } from "@/redux/slices/UserSlice";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [pageData, setPageData] = useState({
@@ -28,6 +30,11 @@ const Login = () => {
   const handleRadio = (e) => {
     setIsAdmin(!isAdmin);
   };
+  const notify = (message) =>toast(message, {
+    position: "bottom-left",
+    autoClose: 5000,
+    theme: "light",
+    });;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -44,10 +51,12 @@ const Login = () => {
               router.push("/")
             } else {
               console.log("Error in logging user from server");
+              notify("Error in logging user from server, Try again")
             }
-        } catch (error) { 
-          console.log(error)
-          console.log("Error in logging user")
+          } catch (error) { 
+            console.log(error)
+            console.log("Error in logging user")
+            notify("Error in logging user, Try again")
         }
     } else {
       try {
@@ -61,10 +70,12 @@ const Login = () => {
             router.push("/")
           } else {
             console.log("Error in logging user from server");
+            notify("Error in logging user from server, Try again")
           }
         } catch (error) { 
           console.log(error)
           console.log("Error in logging user")
+          notify("Error in logging user, Try again")
       }
     }
   };

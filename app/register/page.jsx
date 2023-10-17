@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -20,6 +22,13 @@ const Register = () => {
   const handleRadio = (e) => {
     setIsAdmin(!isAdmin);
   };
+
+  const notify = (message) =>toast(message, {
+    position: "bottom-left",
+    autoClose: 5000,
+    theme: "light",
+    });;
+
 
   const onSubmit = async (data) => {
     const image = data.image[0];
@@ -92,15 +101,16 @@ const Register = () => {
             isAdmin,
           });
           if (res.status === 200) {
-            // router.push("/")
-            console.log("admin registered")
+            router.push("/")
+            notify("Admin registered succesfully, Try again")
   
           } else {
-            console.log("Error in registring admin");
+            notify("Error in registring admin from server, Try again")
           }
         }
       } catch (error) {
         console.log(error);
+        notify("Error in registring admin , Try again")
       }
     }
   };

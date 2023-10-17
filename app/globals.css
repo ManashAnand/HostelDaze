@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.justify-between-gap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); /* Auto-fill with equal-width columns */
+    gap: 1rem; /* Adjust this value as needed */
+  }
+  

@@ -1,6 +1,7 @@
 import HostelCard from "@/components/HostelCard";
 import MainPageLogo from "@/components/MainPageLogo";
 import { anotherPG, hostelData } from "@/data";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -12,7 +13,9 @@ export default function Home() {
       hostelData?.map((hostel) => {
         return(
           <>
-          <HostelCard name={hostel?.name} descp={hostel?.descp}/> 
+          <Link href={`hostels/${hostel?.name}`}>
+            <HostelCard name={hostel?.name} descp={hostel?.descp}/> 
+          </Link>
           </>
         )
       })

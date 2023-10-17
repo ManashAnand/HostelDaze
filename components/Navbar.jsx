@@ -6,15 +6,30 @@ import animationData from "@/assets/logo.json";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { logOut } from "@/redux/slices/UserSlice";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchUser,setSearchUser] = useState("")
   const dispatch = useDispatch()
   const state = useSelector((state) => state.user);
+  const router = useRouter()
  
   const handleLogout = () => {
     dispatch(logOut())
   }
+
+  const handleUserSearch = (e) => {
+    // console.log(e.key)
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  }
+
+  const performSearch = () => {
+    router.push(`/User?name=${searchUser}`)
+  }
+
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
@@ -67,6 +82,11 @@ const Navbar = () => {
               id="search-navbar"
               className=" block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search..."
+              value={searchUser}
+              onChange={(e) => setSearchUser(e.target.value)}
+              // onChange={(e) => console.log(e.key)}
+              onKeyDown={handleUserSearch}
+              // onSubmitEditing={handleUserSearch} 
             />
           </div>
           <button

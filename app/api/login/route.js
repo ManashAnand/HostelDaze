@@ -26,10 +26,10 @@ export async function POST(req) {
             userDoc.password = ""
             return NextResponse.json({admin:"Admin is registered",userDoc},{status:200})
         } 
-        return NextResponse.json({admin:"Admin is not registered"},{status:200})
+        return NextResponse.json({admin:"Admin is not registered"},{status:201})
     
       } catch (error) {
-        return NextResponse.json({admin:"Error in fetching admin data",error},{status:200})
+        return NextResponse.json({admin:"Error in fetching admin data",error},{status:500})
       }
   }
   else {
@@ -40,10 +40,10 @@ export async function POST(req) {
             userDoc.password =""
             return NextResponse.json({user:"User is registered",userDoc},{status:200})
         } 
-        return NextResponse.json({user:"User is not registered"},{status:200})
+        return NextResponse.json({user:"User is not registered"},{status:201})
     
       } catch (error) {
-        return NextResponse.json({user:"Error in fetching user data",error},{status:200})
+        return NextResponse.json({user:"Error in fetching user data",error},{status:500})
       }
   }
 }
