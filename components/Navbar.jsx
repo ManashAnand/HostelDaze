@@ -187,6 +187,7 @@ const Navbar = () => {
                 >
                   Logout
                 </button>
+                <Link href={`/User/${state?._id}`}>
                 <Image
                   className="w-10 h-10 p-1 mt-4 md:mt-0 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
                   src={state?.imageUrl}
@@ -194,6 +195,7 @@ const Navbar = () => {
                   height={5}
                   width={5}
                 />
+                </Link>
               </>
             )}
           </ul>

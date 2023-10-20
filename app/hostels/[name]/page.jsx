@@ -3,6 +3,8 @@ import Image from "next/image";
 import kavery from "../../../assets/kavery.jpg";
 import Link from "next/link";
 import HostelBtn from "@/components/HostelBtn";
+import CarouselBox from "@/components/CarouselBox";
+
 
 const SingleHostelPage = () => {
   return (
@@ -73,10 +75,10 @@ const SingleHostelPage = () => {
         />
       </div>
 
-      <div className=" text-3xl flex justify-center items-center bg-[#FFB703] p-4 -skew-x-12 mt-8 text-white">
+      <div className="mb-12 text-3xl flex justify-center items-center bg-[#FFB703] p-4 -skew-x-12 mt-8 text-white">
         Features of Jails...
       </div>
-      <div className="  gap-4 flex flex-col mt-12 w-full md:flex-row md:justify-between">
+      {/* <div className="  gap-4 flex flex-col mt-12 w-full md:flex-row md:justify-between">
         <Image
           src={kavery}
           className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg "
@@ -105,8 +107,8 @@ const SingleHostelPage = () => {
           height={100}
           width={200}
         />
-      </div>
-
+      </div> */}
+      <CarouselBox/>
 
       <div className="  gap-4 flex flex-col mt-12 w-full md:flex-row md:justify-between">
             <HostelBtn/>

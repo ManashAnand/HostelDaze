@@ -7,10 +7,10 @@ import Link from "next/link";
 
   
 const UserProfileCard = ({ user }) => {
-  const { name, email, number, imageUrl, createdAt } = user;
+  const { _id,name, email, number, imageUrl, createdAt } = user;
   return (  
     <>
-      <Link href={'/'} className="w-[15rem] h-[20rem] bg-[#219EBC] mx-auto rounded-lg overflow-hidden shadow-lg">
+      <Link href={`/User/${_id}`} className="w-[15rem] h-[20rem] bg-[#219EBC] mx-auto rounded-lg overflow-hidden shadow-lg">
         <div className="border-b px-4 pb-6">
           <div className="text-center my-4">
             <Image
