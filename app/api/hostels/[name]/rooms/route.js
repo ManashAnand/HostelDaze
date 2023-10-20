@@ -11,10 +11,16 @@ export async function GET(req){
     const res = await SingleRoomModel.find()
     .populate({
         path: 'left.user',
-        match: { _id: { $exists: true } } // Filter out null values
+        match: { _id: { $exists: true } } 
+      })
+      .populate({
+        path: 'middle.user',
+        match: { _id: { $exists: true } } 
+      })
+      .populate({
+        path: 'right.user',
+        match: { _id: { $exists: true } } 
       });
-    // .populate('middle.user')
-    // .populate('right.user');
   
     if(res){
         return NextResponse.json({res},{status:200})

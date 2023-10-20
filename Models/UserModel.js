@@ -6,6 +6,8 @@ const UserSchema = mongoose.Schema({
   email: {type:String, required: true},
   number: {type:String, required: true},
   imageUrl: {type:String,default:"" },
+},{
+  timestamps: true 
 });
 
 const UserModel =mongoose.models.User || mongoose.model("User", UserSchema);
