@@ -4,10 +4,7 @@ import { NextResponse } from "next/server";
 
 
 export async function GET(req,{params}){
-    // const url = params;
-    // console.log(params)
     const {name} = params
-    // console.log(name)
     await connectDB()
     try {
         // console.log(name)
@@ -36,6 +33,34 @@ export async function GET(req,{params}){
     
  }
 }
+
+export async function PUT(req){
+    const {Id,pos,userId} = await req.json();
+    // console.log(Id)
+    await connectDB()
+    try {
+        const room = await SingleRoomModel.findById(Id);
+        // console.log(room)
+        // return NextResponse.json({room},{status:200});
+        if (!room) {
+            return NextResponse.json({message:"Error in getting room data"},{status:500})
+        
+        }
+        // console.log(userId),
+        // console.log(pos)
+        // console.log(room)
+        // console.log(room[pos])
+        room[pos].isBooked = true;
+        room[pos].user = userId;
+    
+        await room.save();
+        return NextResponse.json({message:"Room updated successfully"},{status:200})
+    } catch (error) {
+        return NextResponse.json({message:"Error in getting room data from server"},{status:500})
+    }
+  
+}
+
 
 // export async function POST(req){
 //     await connectDB()

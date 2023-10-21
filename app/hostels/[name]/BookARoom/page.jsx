@@ -26,8 +26,9 @@ const BookARoom = () => {
     theme: "light",
     });;
 
-  const RoomHandler = (id,room) => {
+  const RoomHandler = (id,room,pos) => {
     console.log(room)
+    console.log(pos)
     if(room?.isBooked){
       notify("Room is already booked!");
       return;
@@ -63,21 +64,21 @@ const BookARoom = () => {
                 <div key={hostelRoom?._id} className="p-2 border-8 border-slate-200 min-w-[25%]  min-h-[20rem] flex flex-col">
                   <div className={`min-h-[25%]  flex justify-end`}>
                     <div className={`${hostelRoom?.left?.isBooked ? "bg-red-400":"bg-white"} w-[40%] h-4/5 flex justify-center items-center rounded-md cursor-pointer`}
-                    onClick={() => RoomHandler(hostelRoom?._id,hostelRoom?.left)}
+                    onClick={() => RoomHandler(hostelRoom?._id,hostelRoom?.left,"left")}
                     >
                       Left
                     </div>
                   </div>
                   <div className={`h-[50%] `}>
                     <div className={`${hostelRoom?.middle?.isBooked ? "bg-red-400":"bg-white"} cursor-pointer h-full w-[25%] sm:w-[15%] flex justify-center items-center rounded-md`}
-                    onClick={() => RoomHandler(hostelRoom?._id,hostelRoom?.middle)}
+                    onClick={() => RoomHandler(hostelRoom?._id,hostelRoom?.middle,"middle")}
                     >
                       middle
                     </div>
                   </div>
                   <div className={`min-h-[25%]  flex justify-end items-end`}>
                     <div className={`${hostelRoom?.right?.isBooked ? "bg-red-400":"bg-white"} w-[40%] h-4/5 flex justify-center items-center rounded-md cursor-pointer`}
-                    onClick={() => RoomHandler(hostelRoom?._id,hostelRoom?.right)}>
+                    onClick={() => RoomHandler(hostelRoom?._id,hostelRoom?.right,"right")}>
                       Right
                     </div>
                   </div>
