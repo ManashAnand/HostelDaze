@@ -35,21 +35,17 @@ export async function GET(req,{params}){
 }
 
 export async function PUT(req){
-    const {Id,pos,userId} = await req.json();
-    // console.log(Id)
+    const {reqData} =  await req.json();
+    console.log(reqData)
+    const {Id,pos,userId} =reqData
     await connectDB()
     try {
+        console.log(Id+" "+pos+" "+userId)
         const room = await SingleRoomModel.findById(Id);
-        // console.log(room)
-        // return NextResponse.json({room},{status:200});
         if (!room) {
             return NextResponse.json({message:"Error in getting room data"},{status:500})
         
         }
-        // console.log(userId),
-        // console.log(pos)
-        // console.log(room)
-        // console.log(room[pos])
         room[pos].isBooked = true;
         room[pos].user = userId;
     

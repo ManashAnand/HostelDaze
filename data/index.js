@@ -5,7 +5,11 @@ export const hostelData = [
   },
   {
     name:"Souparnika",
-    descp: "First year college ",
+    descp: "First year Hostel ",
+  },
+  {
+    name:"KumarDhara",
+    descp: "Girls Hostel ",
   },
   {
     name:"Netravaty",
