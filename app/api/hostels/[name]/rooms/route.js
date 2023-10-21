@@ -1,14 +1,18 @@
 import SingleRoomModel from "@/Models/SingleRoomModel";
-import UserModel from "@/Models/UserModel";
 import { connectDB } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
 
-export async function GET(req){
-    
+export async function GET(req,{params}){
+    // const url = params;
+    // console.log(params)
+    const {name} = params
+    // console.log(name)
     await connectDB()
- try {
-    const res = await SingleRoomModel.find()
+    try {
+        // console.log(name)
+    const lowerCaseHostelName = name.toLowerCase()
+    const res = await SingleRoomModel.find({ HostelName: lowerCaseHostelName })
     .populate({
         path: 'left.user',
         match: { _id: { $exists: true } } 
@@ -25,7 +29,7 @@ export async function GET(req){
     if(res){
         return NextResponse.json({res},{status:200})
     }
-    return NextResponse.json({message:"Error in getting room data"},{status:201})
+    else return NextResponse.json({message:"Error in getting room data"},{status:201})
  } catch (error) {
     console.log(error)
     return NextResponse.json({message:"Error in getting room data from server"},{status:500})
@@ -33,21 +37,21 @@ export async function GET(req){
  }
 }
 
-export async function POST(req){
-    await connectDB()
-    await SingleRoomModel.create({
-        left: {
-            isBooked: true,
-            user: "652d067c823b948f6e69ec90" 
-        },
-        middle: {
-            isBooked: false,
-            user: null
-        },
-        right: {
-            isBooked: false,
-            user: null
-        },
-        RoomNo: 101
-    },)
-}
+// export async function POST(req){
+//     await connectDB()
+//     await SingleRoomModel.create({
+//         left: {
+//             isBooked: true,
+//             user: "652d067c823b948f6e69ec90" 
+//         },
+//         middle: {
+//             isBooked: true,
+//             user: "652d067c823b948f6e69ec92"
+//         },
+//         right: {
+//             isBooked: true,
+//             user: "652d067c823b948f6e69ec93"
+//         },
+//         RoomNo: 102
+//     },)
+// }

@@ -26,6 +26,11 @@ const SingleRoomSchema = mongoose.Schema(
     RoomNo: {
       type: Number,
     },
+    HostelName:{
+      type: String,
+      unique: true,
+      set: (value) => value.toLowerCase(),
+    }
   },
   { timestamps: true }
 );

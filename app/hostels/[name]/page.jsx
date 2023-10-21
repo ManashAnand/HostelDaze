@@ -1,12 +1,17 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import kavery from "../../../assets/kavery.jpg";
 import Link from "next/link";
 import HostelBtn from "@/components/HostelBtn";
 import CarouselBox from "@/components/CarouselBox";
+import { useParams } from "next/navigation";
 
 
 const SingleHostelPage = () => {
+    const {name} = useParams()
+   
   return (
     <>
       <div className=" w-full mt-4 flex flex-col md:flex-row ">
@@ -111,7 +116,7 @@ const SingleHostelPage = () => {
       <CarouselBox/>
 
       <div className="  gap-4 flex flex-col mt-12 w-full md:flex-row md:justify-between">
-            <HostelBtn/>
+            <HostelBtn hostelName={name}/>
         </div>
     </>
   );
