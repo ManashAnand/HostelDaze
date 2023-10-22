@@ -41,8 +41,9 @@ const UserSearchPage = () => {
       <div className="md:grid w-full  grid-cols-3 gap-4 flex flex-col mt-12 min-h-screen">
       {
         data?.map((user) => {
+          {/* console.log(user) */}
           return(
-            <UserProfileCard user={user} />
+            <UserProfileCard user={user} key={user._id} />
           )
         } )
       }
