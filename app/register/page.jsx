@@ -60,7 +60,7 @@ const Register = () => {
 
           console.log(imageUrl);
           if (imageUrl) {
-            const res = await axios.post("http://localhost:3000/api/register", {
+            const res = await axios.post("/api/register", {
               name,
               password,
               number,
@@ -91,7 +91,7 @@ const Register = () => {
         // let imageUrl = "image u  rl";
         // console.log(imageUrl);
         if (imageUrl) {
-          const res = await axios.post("http://localhost:3000/api/admin", {
+          const res = await axios.post("/api/admin", {
             name,
             password,
             number,

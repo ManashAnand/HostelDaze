@@ -45,7 +45,7 @@ const BookARoom = () => {
     console.log(reqData);
     if (state?.isAdmin) {
       const res = await axios.put(
-        `http://localhost:3000/api/hostels/${name}/rooms/admin`,
+        `/api/hostels/${name}/rooms/admin`,
         { reqData }
       );
       console.log(res);
@@ -68,14 +68,14 @@ const BookARoom = () => {
     const reqData = { Id, pos, userId };
     if (state?.isAdmin) {
       const res = await axios.put(
-        `http://localhost:3000/api/hostels/${name}/rooms`,
+        `/api/hostels/${name}/rooms`,
         { reqData }
       );
       return;
     }
     // console.log(reqData)
     const res = await axios.put(
-      `http://localhost:3000/api/hostels/${name}/rooms`,
+      `/api/hostels/${name}/rooms`,
       { reqData }
     );
     console.log(res);
@@ -83,7 +83,7 @@ const BookARoom = () => {
   };
 
   const { data, error, isLoading } = useSWR(
-    `http://localhost:3000/api/hostels/${name}/rooms`,
+    `/api/hostels/${name}/rooms`,
     fetcher
   );
 

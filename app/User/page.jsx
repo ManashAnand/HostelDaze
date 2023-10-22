@@ -20,7 +20,7 @@ const UserSearchPage = () => {
     const searchParams = useSearchParams()
     const name = searchParams.get('name')
 
-    const {data,error,isLoading} = useSWR(`http://localhost:3000/api/user?name=${name}`,fetcher);
+    const {data,error,isLoading} = useSWR(`/api/user?name=${name}`,fetcher);
     
     if(isLoading){
       return(

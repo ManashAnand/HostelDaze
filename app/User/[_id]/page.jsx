@@ -23,7 +23,7 @@ const SingleUserPage = () => {
   const pathname = usePathname()
   const id =  pathname.split('/')[2];
 
-  const {data,error,isLoading} = useSWR(`http://localhost:3000/api/user/${id}`,fetcher);
+  const {data,error,isLoading} = useSWR(`/api/user/${id}`,fetcher);
   if(isLoading){
     return(
       <>

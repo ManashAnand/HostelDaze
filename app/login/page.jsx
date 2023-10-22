@@ -42,7 +42,7 @@ const Login = () => {
     if(!isAdmin){
         try {
           const data = {pageData,isAdmin}
-          const res = await axios.post("http://localhost:3000/api/login", {
+          const res = await axios.post("/api/login", {
              data
             });
             if (res.status === 200) {
@@ -61,7 +61,7 @@ const Login = () => {
     } else {
       try {
         const data = {pageData,isAdmin}
-        const res = await axios.post("http://localhost:3000/api/login", {
+        const res = await axios.post("/api/login", {
            data
           });
           if (res.status === 200) {
