@@ -42,10 +42,7 @@ const UserSearchPage = () => {
       {
         data?.map((user) => {
           return(
-            <>
-            <UserProfileCard user={...user} />
-
-            </>
+            <UserProfileCard user={user} />
           )
         } )
       }

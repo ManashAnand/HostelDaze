@@ -110,7 +110,7 @@ const Login = () => {
           <form className="  w-full xl:px-10 xl:mx-5">
             <h1 className="text-slate-800 font-bold text-4xl mb-1">Hey</h1>
             <p className="text-sm sm:text-4xl font-normal text-slate-600 mb-7">
-              Let's start your registration
+              Lets start your registration
             </p>
             <div className="flex items-center   border-2 py-2 px-3 rounded-2xl mb-4">
               <svg
@@ -186,8 +186,8 @@ const Login = () => {
             >
               Login
             </button>
-            <Link href={'/register'} className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
-              Doesn't have an account
+            <Link href="/register" className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
+              Does not have an account
             </Link>?
           </form>
         </div>
