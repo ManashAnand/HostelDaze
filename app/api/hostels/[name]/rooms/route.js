@@ -9,6 +9,8 @@ export async function GET(req,{params}){
     try {
         // console.log(name)
     const lowerCaseHostelName = name.toLowerCase()
+    
+    console.log(lowerCaseHostelName)
     const res = await SingleRoomModel.find({ HostelName: lowerCaseHostelName })
     .populate({
         path: 'left.user',
@@ -22,7 +24,6 @@ export async function GET(req,{params}){
         path: 'right.user',
         match: { _id: { $exists: true } } 
       });
-  
     if(res){
         return NextResponse.json({res},{status:200})
     }
