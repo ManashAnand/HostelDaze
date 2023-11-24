@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 
+
 const HostelBtn = ({hostelName}) => {
   const state = useSelector((state) => state.user);
   // console.log(state);

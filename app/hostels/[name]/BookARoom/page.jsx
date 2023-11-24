@@ -2,16 +2,21 @@
 
 import Loading from "@/components/Loading";
 import React, { useState } from "react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import Error from "@/components/Error";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
+import { useRouter } from 'next/navigation';
 
 const fetcher = async (...args) => {
-  const response = await axios.get(args);
+  const response = await axios.get(args, {
+    headers: {
+      'Cache-Control': 'no-cache'
+    }
+  });
   // console.log(response?.data?.res)
   return response?.data?.res;
 };
@@ -23,6 +28,7 @@ const BookARoom = () => {
 
   const state = useSelector((state) => state.user);
 
+  const router = useRouter();
   const notify = (message) =>
     toast(message, {
       position: "bottom-left",
@@ -49,8 +55,14 @@ const BookARoom = () => {
         { reqData }
       );
       console.log(res);
-      if (res) notify("Room vacated successfully");
-      return;
+        
+      if (res)
+      {
+        
+      mutate(`/api/hostels/${name}/rooms`) ;
+        notify("Room vacated successfully");
+        return;
+      }
     }
   };
 
@@ -78,8 +90,14 @@ const BookARoom = () => {
       `/api/hostels/${name}/rooms`,
       { reqData }
     );
+    
     console.log(res);
-    if (res) notify("Room booked successfully");
+    if (res){
+      router.refresh()
+      // fetcher(`/api/hostels/${name}/rooms`); 
+      mutate(`/api/hostels/${name}/rooms`) ;
+      notify("Room booked successfully");
+    } 
   };
 
   const { data, error, isLoading } = useSWR(
