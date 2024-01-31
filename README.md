@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Here's how env file looks if you want to run code in your enviornment
+
+    MONGO_URI=mongodb+srv://HostelDaze:***************@hosteldaze.iwq7vpf.mongodb.net/
+
+    # for client component you have to use NEXT_PUBLIC
+    NEXT_PUBLIC_CLOUDINARY_USERNAME="your cloudinary username"
+    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="cloudinary preset"
+
+    BCRYPT_SECRET="secret key"
+    ADMIN_SECRET_KEY=nmit123
+
+    API_URL=http://localhost:3000
