@@ -1,49 +1,136 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HostelDaze - Hostel Booking Application
 
-## Getting Started
+**HostelDaze** is a hostel booking platform designed with two interfaces: **warden** and **student**. This app streamlines hostel management, enabling students to book their beds and wardens to manage room occupancy efficiently. It features real-time indicators for booked and vacant beds.
 
-First, run the development server:
+---
 
+## ✨ Features
+
+- **Dual Interfaces**:
+  - **Warden**: Manage rooms, vacate students, and monitor room occupancy.
+  - **Student**: Book beds, view availability, and search for roommates by name.
+- **Real-Time Indicators**: Visual indicators for booked and vacant beds.
+- **Room Booking**: Each room has 3 beds, and students can book one of them.
+- **Room Search**: Students can search for rooms by another student’s name.
+- **Vacancy Management**: Wardens can vacate individual students or entire rooms.
+- **Scalable and Fast**: Built with modern technologies for a smooth experience.
+- **Live Demo**: [Try it live here](https://hostel-daze.vercel.app/).
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or Yarn
+
+### Steps to Install
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ManashAnand/HostelDaze.git
+   cd HostelDaze
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build the Project**:
+   ```bash
+   npm run build
+   ```
+
+5. **Start the Production Server**:
+   ```bash
+   npm start
+   ```
+
+---
+
+## 🛠️ Development
+
+### Running in Development Mode
+To test changes locally, use the following command:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This starts a local development server and watches for file changes.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 📁 Project Structure
 
-## Learn More
+```plaintext
+HostelDaze/
+├── Models/                 # Added rooms
+├── app/                    # Added health route
+├── assets/                 # Added search functionality for users
+├── components/             # Added real-time updates
+├── data/                   # Added GUI interface for booking
+├── lib/                    # Integrated Cloudinary
+├── public/                 # Integrated Cloudinary
+├── redux/                  # Added Redux for state management
+├── .dockerignore           # Added Dockerfile
+├── .env                    # Added health route
+├── .eslintrc.json          # Integrated Cloudinary
+├── .gitignore              # Removing .env file
+├── Dockerfile              # Added Dockerfile
+├── LICENSE                 # Create LICENSE
+├── README.md               # Update README.md
+├── jsconfig.json           # Integrated Cloudinary
+├── next.config.js          # Added Redux for state management
+├── package-lock.json       # Added personal profile
+├── package.json            # Added personal profile
+├── postcss.config.js       # Integrated Cloudinary
+├── tailwind.config.js      # Integrated Cloudinary
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributions are welcome! Here's how you can contribute:
 
-## Deploy on Vercel
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Create a Pull Request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📜 License
 
-## Here's how env file looks if you want to run code in your enviornment
+This project is licensed under the [MIT License](LICENSE).
 
-    MONGO_URI=mongodb+srv://HostelDaze:***************@hosteldaze.iwq7vpf.mongodb.net/
+---
 
-    # for client component you have to use NEXT_PUBLIC
-    NEXT_PUBLIC_CLOUDINARY_USERNAME="your cloudinary username"
-    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="cloudinary preset"
+## 📞 Support
 
-    BCRYPT_SECRET="secret key"
-    ADMIN_SECRET_KEY=nmit123
+If you encounter any issues or have questions, feel free to open an [issue](https://github.com/ManashAnand/HostelDaze/issues) or reach out.
 
-    API_URL=http://localhost:3000
+---
+
+## 🌟 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- State management powered by [Redux](https://redux.js.org/)
+- Image hosting and processing via [Cloudinary](https://cloudinary.com/)
